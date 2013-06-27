@@ -1,0 +1,4 @@
+include LICENSE
+include README.md
+recursive-include blog_hvad/static *
+recursive-include blog_hvad/templates *
