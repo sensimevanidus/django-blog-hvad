@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+    {% if not posts %}
+        <p>{% trans "No posts found!" %}</p>
+    {% else %}
+        <ul>
+            {% for post in posts %}
+            <li>
+                <article>
+                    <date>{{ post.created_at|date:"d/m/Y H:i" }}</date>
+                    <h3>{{ post.title }}</h3>
+                    <section class="summary">{{ post.excerpt }}</section>
+                </article>
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}
