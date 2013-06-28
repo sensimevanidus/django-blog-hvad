@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+    <article>
+        <date>{{ post.created_at|date:"d/m/Y H:i" }}</date>
+        <h3>{{ post.title }}</h3>
+        <section class="content">{{ post.content|safe|linebreaks }}</section>
+    </article>
+
+{% endblock %}

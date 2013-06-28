@@ -12,7 +12,13 @@
                 <article>
                     <date>{{ post.created_at|date:"d/m/Y H:i" }}</date>
                     <h3>{{ post.title }}</h3>
-                    <section class="summary">{{ post.excerpt }}</section>
+                    <section class="summary">
+                        {% if post.excerpt %}
+                            {{ post.excerpt }}
+                        {% else %}
+                            {{ post.content|striptags|truncatechars:255 }}
+                        {% endif %}
+                    </section>
                 </article>
             </li>
             {% endfor %}
