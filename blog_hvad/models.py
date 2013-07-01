@@ -3,6 +3,7 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from hvad.models import TranslatableModel, TranslatedFields
+from ckeditor.fields import RichTextField
 
 
 class BlogCategory(TranslatableModel):
@@ -42,7 +43,7 @@ class BlogPost(TranslatableModel):
         title=models.CharField(_('title'), max_length=127,),
         slug=models.SlugField(_('slug'), unique=True,),
         excerpt=models.TextField(_('excerpt'), blank=True, null=True,),
-        content=models.TextField(_('content'),),
+        content=RichTextField(_('content'),),
     )
 
     def __unicode__(self):
