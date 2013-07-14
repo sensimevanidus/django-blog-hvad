@@ -12,6 +12,7 @@ class BlogCategory(TranslatableModel):
 
     """
 
+    parent = models.ForeignKey('self', verbose_name=_('parent'), null=True, blank=True,)
     created_at = models.DateTimeField(_('created at'), auto_now_add=True,)
     updated_at = models.DateTimeField(_('updated at'), auto_now=True,)
 
