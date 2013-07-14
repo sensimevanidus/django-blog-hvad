@@ -26,7 +26,7 @@ class BlogCategory(TranslatableModel):
         verbose_name_plural = _('blog categories')
 
     def __unicode__(self):
-        return u'%s' % self.name
+        return u'%s' % self.safe_translation_getter('name')
 
 class BlogPost(TranslatableModel):
     """
@@ -48,4 +48,4 @@ class BlogPost(TranslatableModel):
     )
 
     def __unicode__(self):
-        return u'%s' % self.title
+        return u'%s' % self.safe_translation_getter('title')
