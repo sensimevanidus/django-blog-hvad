@@ -5,7 +5,7 @@ from django.template import RequestContext
 from .models import BlogPost
 
 def posts(request):
-    posts = BlogPost.objects.all()
+    posts = BlogPost.objects.language().all()
     return render_to_response('blog_hvad/list.html', {'posts': posts}, context_instance=RequestContext(request))
 
 def post(request, slug):
