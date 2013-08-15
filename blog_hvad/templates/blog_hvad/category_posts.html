@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+    <h2>{% trans "Posts in category:" %} {{ category }}</h2>
+
+    {% if not posts %}
+        <p>{% trans "No posts found!" %}</p>
+    {% else %}
+        <ul>
+            {% for post in posts %}
+            <li>
+                <a href="{% url 'post' slug=post.slug %}">
+                    <article>
+                        <date>{{ post.created_at|date:"d/m/Y H:i" }}</date>
+                        <h3>{{ post.title }}</h3>
+                        <section class="summary">
+                            {% if post.excerpt %}
+                                {{ post.excerpt }}
+                            {% else %}
+                                {{ post.content|striptags|truncatechars:255 }}
+                            {% endif %}
+                        </section>
+                    </article>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}
